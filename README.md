@@ -1,39 +1,44 @@
 # Házi feladat specifikáció
 
-Információk [itt](https://viauav21.github.io/laborok/hf)
-
 ## Androidalapú szoftverfejlesztés
-### [Dátum - 2023 1. félév]
-### [Teljes név] - ([Neptun kód])
-### [e-mail cím] 
-### Laborvezető: [Laborvezető neve]
+
+### 2023.04.29. - 2023 1. félév
+
+### Göndöcs Martin - (WUPA9P)
+
+### martin.gondocs@gmail.com
+
+### Laborvezető: Kövesdán Gábor
 
 ## Bemutatás
 
-Az alkalmazás rövid, 2-3 mondatos bemutatása. Honnan az ötlet, mi szülte az igényt, ki lehetne a célközönség.
-A laboron és előadáson bemutatott alkalmazásokat nem lehet házi feladatnak választani.
+Az alkalmazás egy kvízt szimulál. Több, különböző témájú kvíz kitöltése lehetséges. Kitöltés végén az eredményeket tároljuk, egy rangsor készül, melyben összevethetőek pontjaink más játékosok pontjaival egy adott témán belül.
+(Ötlet: Quizlet, Kahoot.)
 
 ## Főbb funkciók
 
-Az alkalmazás minden funkciójára kiterjedő leírás. Legyen egyértelműen eldönthető, hogy az adott funkció implementálva van-e!
-P.l.: Az alkalmazással lehetőség van térképen megjeleníteni az állomáspontokat és azok A,B,C,D tulajdonságai meg is jelennek (ha elérhetőek).
+Az alkalmazás használatához **internet** elérésére van szükség.
+
+Az alkalmazás legelső használatakor egy bejelentkező/regisztráló - név, jelszó párost igénylő - kezdőoldal jelenik meg. A művelet elvégzése után valahányszor újraindítjuk az alkalmazást, **nincs szükség újbóli bejelentkezésre**. Bejelentkezést követően a főoldalon van lehetőségünk kilépni, ami visszavisz a kezdőoldalra.
+
+A főoldalon keresztül elindíthatunk egy kvízt vagy megnézhetjük pontjainkat adott témán belül. A kvízek feleletválasztós kérdésekből állnak, minden helyesen megválaszolt kérdés 1 pontot ér. Az eredményeinket más játékosok eredményeivel együtt láthatjuk egy rangsorolt listában.
+
+Lehetőség van az alkalmazás **offline** használatára is. Ekkor csak és kizárólag a korábban is elérhető kvízek elindítása és az alkalmazásból való kijelentkezés lehetséges. Az eredmény nem kerül eltárolásra, hanem a felhasználó értesítést kap arról.
+(A rangsorolt lista offline állapotban nem elérhető.)
 
 ## Választott technológiák:
 
-Az alkalmazás fejlesztése során használt technológiák tételes felsorolása. Az, hogy mi számít technológiának a laborokon ismertetésre kerül, a laborvezetőkkel tovább pontosítható. 
-5 technológia használata javasolt. Például:
+- **UI**: A felhasználói felület Jetpack Compose-ban és MVVM architektúrával.
+- **lista**: Az eredmények egy-két fontosabb részlettel (név, pontszám) együtt egy komplex listában jelennek meg.
+- **Hálózatkezelés** (FireBase): Az alkalmazás Firebase-t használ a bejelentkezésekhez, regisztráláshoz, majd ezt követően az elérhető kvízek letöltéséhez.
+- **Adatbáziskezelés** (Room): A felhasználó bejelentkezési adatait lementi a bejelentkezések után. Hálózatból letöltött kvízek az eszközre is mentésre kerülnek.
+- **Értesítések**: Offline használat közben értesítést küld a kitöltött kvíz eredményéről.
 
-- UI: A felhasználói felület Jetpack Compose-ban és MVVM architektúrával.
-- lista: A kriptovatuták egy-két fontosabb részlettel együtt egy komplex listában jelennek meg. 
-- Hálózatkezelés: Az alkalmazás a [https://coinbin.org/](https://coinbin.org/) nyílt API-t használja, és REST végponton keresztül tölti le az kritovaluták adatait.
-- Adatbáziskezelés: A felhasználó elmentheti a számára fontos kriptovaluták listáját, amit az alkalmazás perzisztensen tárol
-- Notificationök: Az alkalmazás értesítést küld, ha egy kpritovaluta ára az elmentett értékhez képest 10%-nál többet változott.
-
-___
+---
 
 # Házi feladat dokumentáció
 
-### [Alkalmazás neve]
+### [QuizRank]
 
 <img src="./assets/icon.png" width="160">
 
@@ -49,7 +54,6 @@ A laboron és előadáson bemutatott alkalmazásokat nem lehet házi feladatnak 
 Az alkalmazás minden funkciójára kiterjedő leírás. Legyen egyértelműen eldönthető, hogy az adott funkció implementálva van-e!
 P.l.: Az alkalmazással lehetőség van térképen megjeleníteni az állomáspontokat és azok A,B,C,D tulajdonságai meg is jelennek (ha elérhetőek).
 
-
 ## Felhasználói kézikönyv
 
 Az alkalmazás minden funkciójára kiterjedő, teljes körű felhasználói leírás. Az összes releváns képernyőhöz/funkcióhoz tartalmaznia kell képernyőképet!
@@ -57,19 +61,20 @@ Az alkalmazás minden funkciójára kiterjedő, teljes körű felhasználói le�
 A képernyőképekkel kapcsolatos követelmények:
 
 - Android Device Art Generator-ral telefont/tabletet kell rajzolni a képernyő köré!
-	- Mindegy, hogy melyik készüléket választod, de legyen egységes az egész dokumentumban!
-	- Telefonra tervezett képernyőket valamelyik telefon skin-nel, tablet képernyőt (amennyiben készítettél külön) tablet skin-nel készítsünk!
+  - Mindegy, hogy melyik készüléket választod, de legyen egységes az egész dokumentumban!
+  - Telefonra tervezett képernyőket valamelyik telefon skin-nel, tablet képernyőt (amennyiben készítettél külön) tablet skin-nel készítsünk!
 - Álló képernyőket álló módban, fekvőket fekvő módban rakjuk be! (Értelemszerűen. Ha fekvő képernyőképet húzol be a generator-ba, akkor fekvő módban rajzolja köré az eszközt)
--	Minden képhez legyen képaláírás, ami leírja hogy mit kell nézni a képen!
--	A képeket úgy méretezzük, hogy álló telefon méretből kettő elférjen egymás mellett egy sorban (fekvő illetve tablet képeket ehhez viszonyítva nagyítsuk)!
--	Amennyiben gesztúra vezérlést akarunk bemutatni a képernyőn, jelezzük a gesztúrát is! (ld példa kép)
--	A képeket és a képaláírásokat középre igazítsuk!
+- Minden képhez legyen képaláírás, ami leírja hogy mit kell nézni a képen!
+- A képeket úgy méretezzük, hogy álló telefon méretből kettő elférjen egymás mellett egy sorban (fekvő illetve tablet képeket ehhez viszonyítva nagyítsuk)!
+- Amennyiben gesztúra vezérlést akarunk bemutatni a képernyőn, jelezzük a gesztúrát is! (ld példa kép)
+- A képeket és a képaláírásokat középre igazítsuk!
 
 <p align="center">
 <img src="./assets/image1.png" width="320">
 <img src="./assets/image2.png" width="320">
 
 1. ábra: Gesztúrával és gombbal is navigálható képernyők, hasznos kényelmi funkció a felhasználónak ha több lehetőséget is biztosítunk a navigációra
+
 </p>
 
 ## Felhasznált technológiák:
