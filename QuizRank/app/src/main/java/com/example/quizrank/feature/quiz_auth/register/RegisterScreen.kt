@@ -18,12 +18,12 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import hu.bme.aut.android.todo.ui.common.EmailTextField
-import hu.bme.aut.android.todo.ui.common.PasswordTextField
-import hu.bme.aut.android.todo.ui.common.TodoAppBar
-import hu.bme.aut.android.todo.util.UiEvent
+import com.example.quizrank.ui.common.EmailTextField
+import com.example.quizrank.ui.common.PasswordTextField
+import com.example.quizrank.ui.common.QuizRankAppBar
+import com.example.quizrank.util.UiEvent
 import kotlinx.coroutines.launch
-import hu.bme.aut.android.todo.R.string as StringResources
+import com.example.quizrank.R.string as StringResources
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -61,7 +61,7 @@ fun RegisterScreen(
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         topBar = {
-             TodoAppBar(
+             QuizRankAppBar(
                  title = stringResource(id = StringResources.app_bar_title_sign_up), 
                  actions = {  },
                  onNavigateBack = onNavigateBack

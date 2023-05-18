@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import hu.bme.aut.android.todo.TodoApplication
-import hu.bme.aut.android.todo.data.auth.AuthService
+import com.example.quizrank.QuizRankApplication
+import com.example.quizrank.data.auth.AuthService
 import com.example.quizrank.domain.usecases.IsEmailValidUseCase
 import com.example.quizrank.ui.model.UiText
 import com.example.quizrank.ui.model.toUiText
@@ -80,7 +80,7 @@ class LoginUserViewModel constructor(
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
-                val authService = TodoApplication.authService
+                val authService = QuizRankApplication.authService
                 val isEmailValidUseCase = IsEmailValidUseCase()
                 LoginUserViewModel(
                     authService,

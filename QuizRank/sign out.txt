@@ -1,0 +1,54 @@
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
+@Composable
+fun NavGraph(
+    navController: NavHostController = rememberNavController(),
+    authService: AuthService // Inject the AuthService dependency
+) {
+    val hasUser by authService.hasUser.collectAsState() // Observe the user authentication state
+
+    NavHost(
+        navController = navController,
+        startDestination = if (hasUser) Screen.Main.route else Screen.Login.route // Set the start destination based on user authentication state
+    ) {
+        composable(Screen.Login.route) {
+            LoginScreen(
+                onSuccess = {
+                    navController.navigate(Screen.Main.route)
+                },
+                onRegisterClick = {
+                    navController.navigate(Screen.Register.route)
+                }
+            )
+        }
+        composable(Screen.Register.route) {
+            RegisterScreen(
+                onNavigateBack = {
+                    navController.popBackStack(
+                        route = Screen.Login.route,
+                        inclusive = true
+                    )
+                    navController.navigate(Screen.Login.route)
+                },
+                onSuccess = {
+                    navController.navigate(Screen.Main.route)
+                }
+            )
+        }
+        composable(Screen.Main.route) {
+            if (hasUser) {
+                MainScreen(
+                    onSignOut = {
+                        authService.signOut() // Call the signOut function from AuthService
+                        navController.popBackStack(
+                            route = Screen.Login.route,
+                            inclusive = true
+                        )
+                        navController.navigate(Screen.Login.route)
+                    }
+                )
+            } else {
+                navController.navigate(Screen.Login.route)
+            }
+        }
+    }
+}

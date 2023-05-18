@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "784301354130",
+    "project_id": "bmequizrankhf",
+    "storage_bucket": "bmequizrankhf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784301354130:android:1bfe17d099d2066f878a4b",
+        "android_client_info": {
+          "package_name": "com.example.quizrank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784301354130-oa0t43ti54flvsbce3623gsr98loj2bu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjAQDJRaQbZrcMlRqFBzshDZkh2xn7jIg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784301354130-oa0t43ti54flvsbce3623gsr98loj2bu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
