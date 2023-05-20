@@ -10,6 +10,7 @@ import com.example.quizrank.data.auth.AuthService
 import com.example.quizrank.feature.quiz_auth.login.LoginScreen
 import com.example.quizrank.feature.quiz_auth.register.RegisterScreen
 import com.example.quizrank.feature.quiz_main.MainScreen
+import com.example.quizrank.feature.quiz_topic.TopicsScreen
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -56,6 +57,24 @@ fun NavGraph(
                         inclusive = true
                     )
                     navController.navigate(Screen.Login.route)
+                },
+                onPlayClick =  {
+                    navController.popBackStack(
+                        route = Screen.Topics.route,
+                        inclusive = true
+                    )
+                    navController.navigate(Screen.Topics.route)
+                }
+            )
+        }
+        composable(Screen.Topics.route){
+            TopicsScreen(
+                onQuit = {
+                    navController.popBackStack(
+                        route = Screen.Main.route,
+                        inclusive = true
+                    )
+                    navController.navigate(Screen.Main.route)
                 }
             )
         }
