@@ -8,9 +8,9 @@ interface TopicService {
 
     suspend fun getTopic(id: String): Topic?
 
-    suspend fun saveTopic(todo: Topic)
+    suspend fun saveTopic(topic: Topic)
 
-    suspend fun updateTopic(todo: Topic)
+    suspend fun updateTopic(topic: Topic)
 
     suspend fun deleteTopic(id: String)
 }
