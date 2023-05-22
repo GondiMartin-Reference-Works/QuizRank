@@ -8,7 +8,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.quizrank.QuizRankApplication
 import com.example.quizrank.data.auth.AuthService
 import com.example.quizrank.data.topics.TopicService
-import com.example.quizrank.domain.model.Topic
+import com.example.quizrank.ui.model.QuestionUi
 import com.example.quizrank.ui.model.TopicUi
 import com.example.quizrank.ui.model.asTopicUi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,21 +25,7 @@ class TopicsViewModel constructor(
     val state = _state.asStateFlow()
 
     init {
-        //initTopics()
         loadTopics()
-    }
-
-    private fun initTopics(){
-        val topic1 = Topic("1", "Math")
-        val topic2 = Topic("2", "Literature")
-        viewModelScope.launch {
-            try {
-                topicService.saveTopic(topic1)
-                topicService.saveTopic(topic2)
-            }catch (e: Exception){
-                _state.update { it.copy(isLoading = false, error = e) }
-            }
-        }
     }
 
     private fun loadTopics(){

@@ -37,24 +37,6 @@ class FirebaseTopicService(
         return let
     }
 
-    override suspend fun saveTopic(topic: Topic) {
-        authService.currentUserId?.let {
-            currentCollection().add(topic.asFirebaseTopic()).await()
-        }
-    }
-
-    override suspend fun updateTopic(topic: Topic) {
-        authService.currentUserId?.let {
-            currentCollection().document(topic.id).set(topic.asFirebaseTopic()).await()
-        }
-    }
-
-    override suspend fun deleteTopic(id: String) {
-        authService.currentUserId?.let {
-            currentCollection().document(id).delete().await()
-        }
-    }
-
     private fun currentCollection() =
         firestore.collection(TOPIC_COLLECTION)
 

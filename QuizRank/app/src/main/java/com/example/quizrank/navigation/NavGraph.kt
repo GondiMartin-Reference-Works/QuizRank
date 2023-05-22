@@ -81,5 +81,8 @@ fun NavGraph(
                 }
             )
         }
+        composable(Screen.Question.route){
+            // TODO: - create View with ViewModel
+        }
     }
 }
