@@ -69,6 +69,9 @@ fun NavGraph(
         }
         composable(Screen.Topics.route){
             TopicsScreen(
+                onListItemClick = {
+                    navController.navigate(Screen.Main.route)
+                },
                 onQuit = {
                     navController.popBackStack(
                         route = Screen.Main.route,

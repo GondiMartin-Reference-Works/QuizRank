@@ -62,7 +62,7 @@ dependencies {
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
     debugImplementation 'androidx.compose.ui:ui-tooling'
 
-    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.activity:activity-compose:1.7.1'
 
     def lifecycle_version = '2.6.1'
@@ -92,4 +92,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging-ktx'
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    implementation 'com.google.firebase:firebase-firestore-ktx'
 }
