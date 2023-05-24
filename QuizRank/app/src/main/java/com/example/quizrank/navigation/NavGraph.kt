@@ -93,7 +93,9 @@ fun NavGraph(
                 }
             )
         ) {
-            QuestionsScreen()
+            QuestionsScreen(
+
+            )
         }
     }
 }
