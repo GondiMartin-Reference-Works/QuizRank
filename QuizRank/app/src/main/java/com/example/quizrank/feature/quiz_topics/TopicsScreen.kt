@@ -1,14 +1,13 @@
-package com.example.quizrank.feature.quiz_topic
+package com.example.quizrank.feature.quiz_topics
 
-import android.os.Bundle
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Circle
+import androidx.compose.material.icons.filled.Assignment
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -18,6 +17,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -41,12 +42,12 @@ fun TopicsScreen(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             QuizRankAppBar(
-                title = stringResource(id = R.string.home_page),
+                title = stringResource(id = R.string.topics_page),
                 actions = {
                     IconButton(onClick = {
                         onQuit()
                     }) {
-                        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
+                        Icon(imageVector = Icons.Default.Home, contentDescription = null)
                     }
                 }
             )
@@ -89,18 +90,29 @@ fun TopicsScreen(
                                 headlineText = {
                                     Row(verticalAlignment = Alignment.CenterVertically) {
                                         Icon(
-                                            imageVector = Icons.Default.Circle,
+                                            imageVector = Icons.Default.Assignment,
                                             contentDescription = null,
                                             tint = Color.DarkGray,
                                             modifier = Modifier
-                                                .size(40.dp)
+                                                .size(50.dp)
                                                 .padding(
                                                     end = 8.dp,
                                                     top = 8.dp,
                                                     bottom = 8.dp
                                                 ),
                                         )
-                                        Text(text = state.topics[i].title)
+                                        Column(
+                                        ){
+                                            Text(
+                                                text = state.topics[i].title,
+                                                fontWeight = FontWeight.Bold
+                                            )
+                                            Text(
+                                                text = state.topics[i].description,
+                                                fontStyle = FontStyle.Italic,
+                                                color = Color.Gray
+                                            )
+                                        }
                                     }
                                 },
                                 modifier = Modifier.clickable(onClick = {

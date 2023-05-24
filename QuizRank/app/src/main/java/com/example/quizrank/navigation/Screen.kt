@@ -5,5 +5,10 @@ sealed class Screen(val route: String) {
     object Register: Screen("register")
     object Main: Screen("main")
     object Topics: Screen("topics")
-    object Question: Screen("question")
+    object Questions: Screen("topic/{id}"){
+        fun passId(id: String) = "topic/$id"
+    }
+    object Question: Screen("question"){
+
+    }
 }

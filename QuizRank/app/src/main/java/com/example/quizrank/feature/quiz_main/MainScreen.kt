@@ -42,10 +42,14 @@ fun MainScreen(
             QuizRankAppBar(
                 title = stringResource(id = StringResources.home_page),
                 actions = {
+                    IconButton(onClick = { /*TODO: LeaderBoard*/ }) {
+                        Icon(imageVector = Icons.Default.Leaderboard, contentDescription = null)
+                    }
                     IconButton(onClick = {
                         viewModel.signOut()
                         onSignOut()
-                    }) {
+                        }
+                    ) {
                         Icon(imageVector = Icons.Default.Logout, contentDescription = null)
                     }
                 }

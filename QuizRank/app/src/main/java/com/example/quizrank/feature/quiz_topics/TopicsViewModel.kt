@@ -1,4 +1,4 @@
-package com.example.quizrank.feature.quiz_topic
+package com.example.quizrank.feature.quiz_topics
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -8,7 +8,6 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.quizrank.QuizRankApplication
 import com.example.quizrank.data.auth.AuthService
 import com.example.quizrank.data.topics.TopicService
-import com.example.quizrank.ui.model.QuestionUi
 import com.example.quizrank.ui.model.TopicUi
 import com.example.quizrank.ui.model.asTopicUi
 import kotlinx.coroutines.flow.MutableStateFlow

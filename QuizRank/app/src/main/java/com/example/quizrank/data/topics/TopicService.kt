@@ -5,5 +5,4 @@ import kotlinx.coroutines.flow.Flow
 
 interface TopicService {
     val topics: Flow<List<Topic>>
-    suspend fun getTopic(id: String): Topic?
 }

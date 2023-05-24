@@ -10,4 +10,5 @@
     <string name="button_text_sign_up">Sign Up</string>
     <string name="home_page">Home Page</string>
     <string name="text_empty_topics_list">There\'s no topic at the moment.</string>
+    <string name="topics_page">Topics</string>
 </resources>
