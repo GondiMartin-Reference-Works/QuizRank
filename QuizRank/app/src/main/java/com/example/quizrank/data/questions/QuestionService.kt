@@ -5,4 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface QuestionService {
     val questions: Flow<List<Question>>
+    fun setTopicId(topicId: String)
 }

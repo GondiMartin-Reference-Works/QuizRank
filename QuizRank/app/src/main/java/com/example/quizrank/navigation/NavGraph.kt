@@ -12,7 +12,6 @@ import com.example.quizrank.data.auth.AuthService
 import com.example.quizrank.feature.quiz_auth.login.LoginScreen
 import com.example.quizrank.feature.quiz_auth.register.RegisterScreen
 import com.example.quizrank.feature.quiz_main.MainScreen
-import com.example.quizrank.feature.quiz_question.QuestionScreen
 import com.example.quizrank.feature.quiz_questions.QuestionsScreen
 import com.example.quizrank.feature.quiz_topics.TopicsScreen
 
@@ -94,7 +93,13 @@ fun NavGraph(
             )
         ) {
             QuestionsScreen(
-
+                onQuit = {
+                    navController.popBackStack(
+                        route = Screen.Main.route,
+                        inclusive = true
+                    )
+                    navController.navigate(Screen.Main.route)
+                }
             )
         }
     }

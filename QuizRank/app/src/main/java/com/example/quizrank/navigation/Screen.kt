@@ -8,7 +8,4 @@ sealed class Screen(val route: String) {
     object Questions: Screen("topic/{id}"){
         fun passId(id: String) = "topic/$id"
     }
-    object Question: Screen("question"){
-
-    }
 }

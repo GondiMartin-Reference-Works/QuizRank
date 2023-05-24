@@ -22,6 +22,6 @@ class QuizRankApplication : Application() {
         super.onCreate()
         authService = FirebaseAuthService(FirebaseAuth.getInstance())
         topicService = FirebaseTopicService(FirebaseFirestore.getInstance(), authService)
-        questionService = FirebaseQuestionService(FirebaseFirestore.getInstance(), authService, topicService)
+        questionService = FirebaseQuestionService(FirebaseFirestore.getInstance())
     }
 }

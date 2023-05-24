@@ -101,8 +101,7 @@ fun TopicsScreen(
                                                     bottom = 8.dp
                                                 ),
                                         )
-                                        Column(
-                                        ){
+                                        Column{
                                             Text(
                                                 text = state.topics[i].title,
                                                 fontWeight = FontWeight.Bold

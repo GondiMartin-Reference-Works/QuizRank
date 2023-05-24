@@ -1,5 +1,6 @@
 package com.example.quizrank.data.questions.firebase
 
+import com.example.quizrank.QuizRankApplication.Companion.authService
 import com.example.quizrank.data.auth.AuthService
 import com.example.quizrank.data.questions.QuestionService
 import com.example.quizrank.data.topics.TopicService
@@ -14,15 +15,15 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
 class FirebaseQuestionService(
-    private val firestore: FirebaseFirestore,
-    private val authService: AuthService,
-    private val topicService: TopicService
+    private val firestore: FirebaseFirestore
 ): QuestionService {
 
+    private var _topicId: String = ""
+
     @OptIn(ExperimentalCoroutinesApi::class)
-    override val questions: Flow<List<Question>> = authService.currentUser.flatMapLatest { user ->
-        if (user == null) flow {emit(emptyList())}
-        else currentCollection(user.id)
+    override val questions: Flow<List<Question>> = authService.currentUser.flatMapLatest { topic ->
+        if (topic == null) flow {emit(emptyList())}
+        else currentCollection(topic.id)
             .snapshots()
             .map { snapshot ->
                 snapshot.toObjects<FirebaseQuestion>()
@@ -30,6 +31,9 @@ class FirebaseQuestionService(
             }
     }
 
+    override fun setTopicId(topicId: String){
+        _topicId = topicId
+    }
     private fun currentCollection(id: String) =
         firestore.collection(TOPIC_COLLECTION).document(id).collection(QUESTION_COLLECTION)
 
