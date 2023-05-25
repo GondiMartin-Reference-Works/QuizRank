@@ -1,5 +1,6 @@
 package com.example.quizrank.feature.quiz_questions
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -77,13 +78,12 @@ fun QuestionsScreen(
                 )
             } else{
                 Text("Here we are")
-                val question: QuestionUi = state.questions[viewModel.currentQuestionIndex]
+                val question: QuestionUi = state.questions[state.currentQuestionIndex]
+                Log.d("test-question", question.text)
                 if (question.answers.size == 2)
                     TwoOptionQuestion(
                         onButtonClick = viewModel::onButtonClick,
                         text = question.text,
-                        /*firstButtonText = question.option1,
-                        secondButtonText = question.option2*/
                         firstButtonText = question.answers.values.elementAt(0),
                         secondButtonText = question.answers.values.elementAt(1)
                     )
@@ -91,10 +91,6 @@ fun QuestionsScreen(
                     FourOptionQuestion(
                         onButtonClick = viewModel::onButtonClick,
                         text = question.text,
-                        /*firstButtonText = question.option1,
-                        secondButtonText = question.option2,
-                        thirdButtonText = question.option3,
-                        fourthButtonText = question.option4*/
                         firstButtonText = question.answers.values.elementAt(0),
                         secondButtonText = question.answers.values.elementAt(1),
                         thirdButtonText = question.answers.values.elementAt(2),

@@ -26,10 +26,10 @@ class QuestionsViewModel constructor(
 
     private val _state = MutableStateFlow(QuestionsState())
     val state = _state.asStateFlow()
-    var currentQuestionIndex: Int
+    private var _currentQuestionIndex: Int
     init {
         loadQuestions()
-        currentQuestionIndex = 0
+        _currentQuestionIndex = 0
     }
 
     private fun loadQuestions() {
@@ -38,12 +38,10 @@ class QuestionsViewModel constructor(
         viewModelScope.launch {
             _state.update { it.copy(isLoading = true) }
             try {
-                CoroutineScope(coroutineContext).launch(Dispatchers.IO) {
-                    questionService.setTopicId(topicId)
-                    questionService.questions.collect{
-                        val questions = it.map {it.asQuestionUi()}
-                        _state.update { it.copy(isLoading = false, questions = questions) }
-                }
+                questionService.setTopicId(topicId)
+                questionService.questions.collect{
+                    val questions = it.map {it.asQuestionUi()}
+                    _state.update { it.copy(isLoading = false, questions = questions) }
                 }
             } catch (e: Exception) {
                 _state.update { it.copy(isLoading = false, error = e) }
@@ -51,9 +49,15 @@ class QuestionsViewModel constructor(
         }
     }
 
-    fun onButtonClick(){
-        ++currentQuestionIndex
+    fun onButtonClick() {
+        viewModelScope.launch {
+            _state.update { currentState ->
+                val newIndex = currentState.currentQuestionIndex + 1
+                currentState.copy(currentQuestionIndex = newIndex)
+            }
+        }
     }
+
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
@@ -72,5 +76,6 @@ data class QuestionsState(
     val isLoading: Boolean = false,
     val error: Throwable? = null,
     val isError: Boolean = error != null,
-    val questions: List<QuestionUi> = emptyList()
+    val questions: List<QuestionUi> = emptyList(),
+    val currentQuestionIndex: Int = 0,
 )
