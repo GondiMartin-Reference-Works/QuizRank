@@ -21,9 +21,9 @@ class FirebaseQuestionService(
     private var _topicId: String = ""
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    override val questions: Flow<List<Question>> = authService.currentUser.flatMapLatest { topic ->
-        if (topic == null) flow {emit(emptyList())}
-        else currentCollection(topic.id)
+    override val questions: Flow<List<Question>> = authService.currentUser.flatMapLatest { user ->
+        if (_topicId === "") flow {emit(emptyList())}
+        else currentCollection(_topicId)
             .snapshots()
             .map { snapshot ->
                 snapshot.toObjects<FirebaseQuestion>()
@@ -38,7 +38,7 @@ class FirebaseQuestionService(
         firestore.collection(TOPIC_COLLECTION).document(id).collection(QUESTION_COLLECTION)
 
     companion object{
-        private const val TOPIC_COLLECTION = "topic"
+        private const val TOPIC_COLLECTION = "temp-topics"
         private const val QUESTION_COLLECTION = "questions"
     }
 }

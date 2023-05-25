@@ -42,6 +42,6 @@ class FirebaseTopicService(
         firestore.collection(TOPIC_COLLECTION)
 
     companion object {
-        private const val TOPIC_COLLECTION = "topics"
+        private const val TOPIC_COLLECTION = "temp-topics"
     }
 }

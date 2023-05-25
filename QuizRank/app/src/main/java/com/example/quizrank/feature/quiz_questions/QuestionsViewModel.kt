@@ -1,5 +1,6 @@
 package com.example.quizrank.feature.quiz_questions
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -11,6 +12,8 @@ import com.example.quizrank.QuizRankApplication
 import com.example.quizrank.data.questions.QuestionService
 import com.example.quizrank.ui.model.QuestionUi
 import com.example.quizrank.ui.model.asQuestionUi
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -31,18 +34,25 @@ class QuestionsViewModel constructor(
 
     private fun loadQuestions() {
         val topicId = checkNotNull<String>(savedState["id"])
-        questionService.setTopicId(topicId)
+        Log.d("questions-error", topicId)
         viewModelScope.launch {
             _state.update { it.copy(isLoading = true) }
             try {
-                questionService.questions.collect{
-                    val questions = it.map {it.asQuestionUi()}
-                    _state.update { it.copy(isLoading = false, questions = questions) }
+                CoroutineScope(coroutineContext).launch(Dispatchers.IO) {
+                    questionService.setTopicId(topicId)
+                    questionService.questions.collect{
+                        val questions = it.map {it.asQuestionUi()}
+                        _state.update { it.copy(isLoading = false, questions = questions) }
+                }
                 }
             } catch (e: Exception) {
                 _state.update { it.copy(isLoading = false, error = e) }
             }
         }
+    }
+
+    fun onButtonClick(){
+        ++currentQuestionIndex
     }
 
     companion object {
