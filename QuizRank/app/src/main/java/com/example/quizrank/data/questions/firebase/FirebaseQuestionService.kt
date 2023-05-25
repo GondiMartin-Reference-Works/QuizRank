@@ -38,7 +38,7 @@ class FirebaseQuestionService(
         firestore.collection(TOPIC_COLLECTION).document(id).collection(QUESTION_COLLECTION)
 
     companion object{
-        private const val TOPIC_COLLECTION = "temp-topics"
+        private const val TOPIC_COLLECTION = "topics"
         private const val QUESTION_COLLECTION = "questions"
     }
 }

@@ -1,6 +1,6 @@
 package com.example.quizrank.domain.model
 
-data class Question(
+/*data class Question(
     val id: String = "",
     val text: String = "",
     val value: String = "",
@@ -9,11 +9,11 @@ data class Question(
     val option3: String = "",
     val option4: String = "",
     val optionCount: Int = 4
-)
+)*/
 
-/*data class Question(
+data class Question(
     val id: String = "",
     val text: String = "",
     val answers: Map<String, String>,
     val value: String = "",
-)*/
+)

@@ -3,7 +3,7 @@ package com.example.quizrank.ui.model
 import com.example.quizrank.domain.model.Question
 
 
-data class QuestionUi(
+/*data class QuestionUi(
     val id: String = "",
     val text: String = "",
     val value: String = "",
@@ -34,9 +34,9 @@ fun QuestionUi.asQuestion(): Question = Question(
     option3 = option3,
     option4 = option4,
     optionCount = optionCount
-)
+)*/
 
-/*
+
 data class QuestionUi(
     val id: String = "",
     val text: String = "",
@@ -56,4 +56,4 @@ fun QuestionUi.asQuestion(): Question = Question(
     text = text,
     answers = answers,
     value = value,
-)*/
+)

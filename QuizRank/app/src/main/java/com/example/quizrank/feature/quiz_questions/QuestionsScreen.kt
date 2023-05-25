@@ -78,27 +78,27 @@ fun QuestionsScreen(
             } else{
                 Text("Here we are")
                 val question: QuestionUi = state.questions[viewModel.currentQuestionIndex]
-                if (question.optionCount == 2)
+                if (question.answers.size == 2)
                     TwoOptionQuestion(
                         onButtonClick = viewModel::onButtonClick,
                         text = question.text,
-                        firstButtonText = question.option1,
-                        secondButtonText = question.option2
-                        //firstButtonText = question.answers.values.elementAt(0),
-                        //secondButtonText = question.answers.values.elementAt(1)
+                        /*firstButtonText = question.option1,
+                        secondButtonText = question.option2*/
+                        firstButtonText = question.answers.values.elementAt(0),
+                        secondButtonText = question.answers.values.elementAt(1)
                     )
                 else
                     FourOptionQuestion(
                         onButtonClick = viewModel::onButtonClick,
                         text = question.text,
-                        firstButtonText = question.option1,
+                        /*firstButtonText = question.option1,
                         secondButtonText = question.option2,
                         thirdButtonText = question.option3,
-                        fourthButtonText = question.option4
-                        /*firstButtonText = question.answers.values.elementAt(0),
+                        fourthButtonText = question.option4*/
+                        firstButtonText = question.answers.values.elementAt(0),
                         secondButtonText = question.answers.values.elementAt(1),
                         thirdButtonText = question.answers.values.elementAt(2),
-                        fourthButtonText = question.answers.values.elementAt(3)*/
+                        fourthButtonText = question.answers.values.elementAt(3)
                     )
             }
         }
