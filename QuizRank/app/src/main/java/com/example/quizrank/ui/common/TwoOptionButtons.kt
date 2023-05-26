@@ -32,14 +32,14 @@ fun TwoOptionButtons(
             horizontalArrangement = Arrangement.SpaceEvenly
         ){
             Button(
-                onClick = { onButtonClick },
+                onClick = { onButtonClick() },
                 modifier = Modifier.padding(2.dp, 0.dp).fillMaxWidth().weight(0.5f),
                 shape = CutCornerShape(10.dp)
             ) {
                 Text(text = firstButtonText)
             }
             Button(
-                onClick = { onButtonClick },
+                onClick = { onButtonClick() },
                 modifier = Modifier.padding(2.dp, 0.dp).fillMaxWidth().weight(0.5f),
                 shape = CutCornerShape(10.dp)
             ) {

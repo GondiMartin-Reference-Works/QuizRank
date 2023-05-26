@@ -15,6 +15,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,7 +37,7 @@ fun QuestionsScreen(
     onQuit: () -> Unit = {},
     viewModel: QuestionsViewModel = viewModel(factory = QuestionsViewModel.Factory)
 ){
-    val state by viewModel.state.collectAsStateWithLifecycle()
+    val state by viewModel.state.collectAsState()
     val context = LocalContext.current
 
     Scaffold(
@@ -77,19 +78,18 @@ fun QuestionsScreen(
                         ?: stringResource(id = R.string.some_error_message)
                 )
             } else{
-                Text("Here we are")
                 val question: QuestionUi = state.questions[state.currentQuestionIndex]
-                Log.d("test-question", question.text)
+                Log.d("new question", question.toString())
                 if (question.answers.size == 2)
                     TwoOptionQuestion(
-                        onButtonClick = viewModel::onButtonClick,
+                        onButtonClick = { viewModel.onButtonClick() },
                         text = question.text,
                         firstButtonText = question.answers.values.elementAt(0),
                         secondButtonText = question.answers.values.elementAt(1)
                     )
                 else
                     FourOptionQuestion(
-                        onButtonClick = viewModel::onButtonClick,
+                        onButtonClick = { viewModel.onButtonClick() },
                         text = question.text,
                         firstButtonText = question.answers.values.elementAt(0),
                         secondButtonText = question.answers.values.elementAt(1),

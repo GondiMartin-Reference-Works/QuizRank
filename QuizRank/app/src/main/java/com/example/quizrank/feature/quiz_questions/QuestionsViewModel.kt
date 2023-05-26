@@ -12,8 +12,6 @@ import com.example.quizrank.QuizRankApplication
 import com.example.quizrank.data.questions.QuestionService
 import com.example.quizrank.ui.model.QuestionUi
 import com.example.quizrank.ui.model.asQuestionUi
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -26,10 +24,8 @@ class QuestionsViewModel constructor(
 
     private val _state = MutableStateFlow(QuestionsState())
     val state = _state.asStateFlow()
-    private var _currentQuestionIndex: Int
     init {
         loadQuestions()
-        _currentQuestionIndex = 0
     }
 
     private fun loadQuestions() {
@@ -50,12 +46,7 @@ class QuestionsViewModel constructor(
     }
 
     fun onButtonClick() {
-        viewModelScope.launch {
-            _state.update { currentState ->
-                val newIndex = currentState.currentQuestionIndex + 1
-                currentState.copy(currentQuestionIndex = newIndex)
-            }
-        }
+        _state.value = _state.value.copy(currentQuestionIndex = _state.value.currentQuestionIndex + 1)
     }
 
 

@@ -27,7 +27,7 @@ fun FourOptionButtons(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(
-            onClick = { onButtonClick },
+            onClick = { onButtonClick() },
             modifier = Modifier
                 .fillMaxWidth(),
             shape = CutCornerShape(10.dp)
@@ -35,7 +35,7 @@ fun FourOptionButtons(
             Text(text = firstButtonText)
         }
         Button(
-            onClick = { onButtonClick },
+            onClick = { onButtonClick() },
             modifier = Modifier
                 .fillMaxWidth(),
             shape = CutCornerShape(10.dp)
@@ -43,7 +43,7 @@ fun FourOptionButtons(
             Text(text = secondButtonText)
         }
         Button(
-            onClick = { onButtonClick },
+            onClick = { onButtonClick() },
             modifier = Modifier
                 .fillMaxWidth(),
             shape = CutCornerShape(10.dp)
@@ -51,7 +51,7 @@ fun FourOptionButtons(
             Text(text = thirdButtonText)
         }
         Button(
-            onClick = { onButtonClick },
+            onClick = { onButtonClick() },
             modifier = Modifier
                 .fillMaxWidth(),
             shape = CutCornerShape(10.dp)
