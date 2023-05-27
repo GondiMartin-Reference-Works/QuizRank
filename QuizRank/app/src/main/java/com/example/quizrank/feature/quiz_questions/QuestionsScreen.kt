@@ -83,6 +83,7 @@ fun QuestionsScreen(
                     Log.d("good answer count", state.goodAnswerCount.toString())
                     ResultPage(
                         onQuitClick = { onQuit() },
+                        onSaveClick = viewModel::onSave,
                         questionsCount = state.questions.size,
                         goodAnswerCount = state.goodAnswerCount
                     )

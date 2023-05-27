@@ -13,7 +13,9 @@ import com.example.quizrank.feature.quiz_auth.login.LoginScreen
 import com.example.quizrank.feature.quiz_auth.register.RegisterScreen
 import com.example.quizrank.feature.quiz_main.MainScreen
 import com.example.quizrank.feature.quiz_questions.QuestionsScreen
+import com.example.quizrank.feature.quiz_results.ResultsScreen
 import com.example.quizrank.feature.quiz_topics.TopicsScreen
+import com.example.quizrank.ui.model.TopicUi
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -67,13 +69,20 @@ fun NavGraph(
                         inclusive = true
                     )
                     navController.navigate(Screen.Topics.route)
+                },
+                onViewLeaderBoard = {
+                    navController.popBackStack(
+                        route = Screen.Results.route,
+                        inclusive = true
+                    )
+                    navController.navigate(Screen.Results.route)
                 }
             )
         }
         composable(Screen.Topics.route){
             TopicsScreen(
-                onListItemClick = {
-                    navController.navigate(Screen.Questions.passId(it))
+                onListItemClick = { id, title ->
+                    navController.navigate(Screen.Questions.passId(id, title))
                 },
                 onQuit = {
                     navController.popBackStack(
@@ -89,10 +98,24 @@ fun NavGraph(
             arguments = listOf(
                 navArgument("id") {
                     type = NavType.StringType
+                },
+                navArgument("title") {
+                    type = NavType.StringType
                 }
             )
         ) {
             QuestionsScreen(
+                onQuit = {
+                    navController.popBackStack(
+                        route = Screen.Main.route,
+                        inclusive = true
+                    )
+                    navController.navigate(Screen.Main.route)
+                }
+            )
+        }
+        composable(Screen.Results.route){
+            ResultsScreen(
                 onQuit = {
                     navController.popBackStack(
                         route = Screen.Main.route,

@@ -21,7 +21,7 @@ class FirebaseQuestionService(
     private var _topicId: String = ""
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    override val questions: Flow<List<Question>> = authService.currentUser.flatMapLatest { user ->
+    override val questions: Flow<List<Question>> = authService.currentUser.flatMapLatest { _ ->
         if (_topicId === "") flow {emit(emptyList())}
         else currentCollection(_topicId)
             .snapshots()

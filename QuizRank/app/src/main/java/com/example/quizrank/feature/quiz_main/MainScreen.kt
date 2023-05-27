@@ -14,6 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -27,8 +28,9 @@ import com.example.quizrank.R.string as StringResources
 @ExperimentalMaterial3Api
 @Composable
 fun MainScreen(
-    onSignOut: () -> Unit,
-    onPlayClick: () -> Unit,
+    onSignOut: () -> Unit = { },
+    onPlayClick: () -> Unit = { },
+    onViewLeaderBoard: () -> Unit = { },
     viewModel: MainViewModel = viewModel(factory = MainViewModel.Factory)
 ){
 
@@ -42,7 +44,7 @@ fun MainScreen(
             QuizRankAppBar(
                 title = stringResource(id = StringResources.home_page),
                 actions = {
-                    IconButton(onClick = { /*TODO: LeaderBoard*/ }) {
+                    IconButton(onClick = { onViewLeaderBoard() }) {
                         Icon(imageVector = Icons.Default.Leaderboard, contentDescription = null)
                     }
                     IconButton(onClick = {
@@ -109,4 +111,11 @@ fun MainScreen(
             }
         }
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview
+@Composable
+fun MainScreenPreview(){
+    MainScreen()
 }

@@ -10,8 +10,12 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.quizrank.QuizRankApplication
 import com.example.quizrank.data.questions.QuestionService
+import com.example.quizrank.data.results.ResultService
+import com.example.quizrank.domain.model.Result
 import com.example.quizrank.ui.model.QuestionUi
 import com.example.quizrank.ui.model.asQuestionUi
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -19,17 +23,21 @@ import kotlinx.coroutines.launch
 
 class QuestionsViewModel constructor(
     private val savedState: SavedStateHandle,
-    private val questionService: QuestionService
+    private val questionService: QuestionService,
+    private val resultService: ResultService
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(QuestionsState())
     val state = _state.asStateFlow()
+
+    private var resultId: Int = 0
     init {
         loadQuestions()
     }
 
     private fun loadQuestions() {
-        val topicId = checkNotNull<String>(savedState["id"])
+        val topicId = "topic-"+checkNotNull<String>(savedState["title"]).split("-")[0]
+        Log.d("topicID", topicId)
         viewModelScope.launch {
             _state.update { it.copy(isLoading = true) }
             try {
@@ -52,10 +60,27 @@ class QuestionsViewModel constructor(
     }
 
     private fun resultOfGivenAnswer(expectedText: String, actualText: String): Int{
-        Log.d("expectedText-actualText", "$expectedText-$actualText")
         if(expectedText.equals(actualText))
             return 1
         return 0
+    }
+
+    fun onSave(name: String){
+        val topicTitle = checkNotNull<String>(savedState["title"]).split("-")[1]
+        viewModelScope.launch {
+            try {
+                CoroutineScope(coroutineContext).launch(Dispatchers.IO) {
+                    resultService.saveResult(Result(
+                        id = (resultId++).toString(),
+                        topic = topicTitle,
+                        result = _state.value.goodAnswerCount,
+                        name = name,
+                    ))
+                }
+            } catch (e: Exception) {
+                throw Exception(e)
+            }
+        }
     }
 
     companion object {
@@ -63,9 +88,11 @@ class QuestionsViewModel constructor(
             initializer {
                 val questionService = QuizRankApplication.questionService
                 val savedState = createSavedStateHandle()
+                val resultService = QuizRankApplication.resultService
                 QuestionsViewModel(
                     questionService = questionService,
-                    savedState = savedState
+                    savedState = savedState,
+                    resultService = resultService
                 )
             }
         }

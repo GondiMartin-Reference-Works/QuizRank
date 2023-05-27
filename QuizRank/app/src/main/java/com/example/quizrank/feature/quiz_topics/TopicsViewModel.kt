@@ -31,9 +31,9 @@ class TopicsViewModel constructor(
         viewModelScope.launch {
             _state.update { it.copy(isLoading = true)  }
             try{
-                topicService.topics.collect{
+                topicService.topics.collect{ it ->
                     val topics = it.map { it.asTopicUi() }
-                    _state.update { it.copy(isLoading = false, topics = topics) }
+                    _state.update { it1 -> it1.copy(isLoading = false, topics = topics.sortedBy { it.title }) }
                 }
             }catch (e: Exception){
                 _state.update { it.copy(isLoading = false, error = e) }
