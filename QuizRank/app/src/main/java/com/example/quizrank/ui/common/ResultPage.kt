@@ -4,8 +4,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -13,13 +16,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun FourOptionQuestion(
-    text: String = "Put Question Here",
-    onButtonClick: (text: String) -> Unit = { },
-    firstButtonText: String = "A",
-    secondButtonText: String = "B",
-    thirdButtonText: String = "C",
-    fourthButtonText: String = "D"
+fun ResultPage(
+    onQuitClick: () -> Unit = { },
+    questionsCount: Int = 50,
+    goodAnswerCount: Int = 50
 ){
     Column(
         modifier = Modifier
@@ -30,20 +30,21 @@ fun FourOptionQuestion(
         verticalArrangement = Arrangement.SpaceEvenly
     ){
         Card(
-            text = text
+            text = "Congrats!\n\nCheck your score below!\n\n\n" +
+                    "${goodAnswerCount}/${questionsCount}"
         )
-        FourOptionButtons(
-            onButtonClick = onButtonClick,
-            firstButtonText = firstButtonText,
-            secondButtonText = secondButtonText,
-            thirdButtonText = thirdButtonText,
-            fourthButtonText = fourthButtonText
-        )
+        Button(
+            onClick = { onQuitClick() },
+            modifier = Modifier
+                .fillMaxWidth(0.75f)
+        ){
+            Text(text = "Return to Home Page")
+        }
     }
 }
 
 @Preview
 @Composable
-fun FourOptionQuestionPreview(){
-    FourOptionQuestion()
+fun ResultPagePreview(){
+    ResultPage()
 }

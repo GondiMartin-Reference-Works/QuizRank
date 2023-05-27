@@ -27,6 +27,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.quizrank.R
 import com.example.quizrank.ui.common.FourOptionQuestion
 import com.example.quizrank.ui.common.QuizRankAppBar
+import com.example.quizrank.ui.common.ResultPage
 import com.example.quizrank.ui.common.TwoOptionQuestion
 import com.example.quizrank.ui.model.QuestionUi
 import com.example.quizrank.ui.model.toUiText
@@ -78,24 +79,33 @@ fun QuestionsScreen(
                         ?: stringResource(id = R.string.some_error_message)
                 )
             } else{
-                val question: QuestionUi = state.questions[state.currentQuestionIndex]
-                Log.d("new question", question.toString())
-                if (question.answers.size == 2)
-                    TwoOptionQuestion(
-                        onButtonClick = { viewModel.onButtonClick() },
-                        text = question.text,
-                        firstButtonText = question.answers.values.elementAt(0),
-                        secondButtonText = question.answers.values.elementAt(1)
+                if(state.currentQuestionIndex >= state.questions.size){
+                    Log.d("good answer count", state.goodAnswerCount.toString())
+                    ResultPage(
+                        onQuitClick = { onQuit() },
+                        questionsCount = state.questions.size,
+                        goodAnswerCount = state.goodAnswerCount
                     )
-                else
-                    FourOptionQuestion(
-                        onButtonClick = { viewModel.onButtonClick() },
-                        text = question.text,
-                        firstButtonText = question.answers.values.elementAt(0),
-                        secondButtonText = question.answers.values.elementAt(1),
-                        thirdButtonText = question.answers.values.elementAt(2),
-                        fourthButtonText = question.answers.values.elementAt(3)
-                    )
+                }
+                else{
+                    val question: QuestionUi = state.questions[state.currentQuestionIndex]
+                    if (question.answers.size == 2)
+                        TwoOptionQuestion(
+                            onButtonClick = viewModel::onButtonClick,
+                            text = question.text,
+                            firstButtonText = question.answers.values.elementAt(0),
+                            secondButtonText = question.answers.values.elementAt(1)
+                        )
+                    else
+                        FourOptionQuestion(
+                            onButtonClick = viewModel::onButtonClick,
+                            text = question.text,
+                            firstButtonText = question.answers.values.elementAt(0),
+                            secondButtonText = question.answers.values.elementAt(1),
+                            thirdButtonText = question.answers.values.elementAt(2),
+                            fourthButtonText = question.answers.values.elementAt(3)
+                        )
+                }
             }
         }
     }

@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun FourOptionButtons(
-    onButtonClick: () -> Unit = { },
+    onButtonClick: (text: String) -> Unit = { },
     firstButtonText: String = "A",
     secondButtonText: String = "B",
     thirdButtonText: String = "C",
@@ -27,7 +27,7 @@ fun FourOptionButtons(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(
-            onClick = { onButtonClick() },
+            onClick = { onButtonClick(firstButtonText) },
             modifier = Modifier
                 .fillMaxWidth(),
             shape = CutCornerShape(10.dp)
@@ -35,7 +35,7 @@ fun FourOptionButtons(
             Text(text = firstButtonText)
         }
         Button(
-            onClick = { onButtonClick() },
+            onClick = { onButtonClick(secondButtonText) },
             modifier = Modifier
                 .fillMaxWidth(),
             shape = CutCornerShape(10.dp)
@@ -43,7 +43,7 @@ fun FourOptionButtons(
             Text(text = secondButtonText)
         }
         Button(
-            onClick = { onButtonClick() },
+            onClick = { onButtonClick(thirdButtonText) },
             modifier = Modifier
                 .fillMaxWidth(),
             shape = CutCornerShape(10.dp)
@@ -51,7 +51,7 @@ fun FourOptionButtons(
             Text(text = thirdButtonText)
         }
         Button(
-            onClick = { onButtonClick() },
+            onClick = { onButtonClick(fourthButtonText) },
             modifier = Modifier
                 .fillMaxWidth(),
             shape = CutCornerShape(10.dp)

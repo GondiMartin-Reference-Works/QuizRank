@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun QuestionCard(
+fun Card(
     text: String = "Put Question Here"
 ){
     Row(
@@ -50,6 +50,6 @@ fun QuestionCard(
 
 @Preview
 @Composable
-fun QuestionCardPreview(){
-    QuestionCard()
+fun CardPreview(){
+    Card()
 }

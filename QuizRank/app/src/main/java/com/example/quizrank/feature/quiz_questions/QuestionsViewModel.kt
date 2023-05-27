@@ -30,7 +30,6 @@ class QuestionsViewModel constructor(
 
     private fun loadQuestions() {
         val topicId = checkNotNull<String>(savedState["id"])
-        Log.d("questions-error", topicId)
         viewModelScope.launch {
             _state.update { it.copy(isLoading = true) }
             try {
@@ -45,10 +44,19 @@ class QuestionsViewModel constructor(
         }
     }
 
-    fun onButtonClick() {
-        _state.value = _state.value.copy(currentQuestionIndex = _state.value.currentQuestionIndex + 1)
+    fun onButtonClick(clickedButtonText: String) {
+        _state.update { it.copy(
+            currentQuestionIndex = it.currentQuestionIndex + 1,
+            goodAnswerCount = it.goodAnswerCount + resultOfGivenAnswer(it.questions[it.currentQuestionIndex].value, clickedButtonText)
+        ) }
     }
 
+    private fun resultOfGivenAnswer(expectedText: String, actualText: String): Int{
+        Log.d("expectedText-actualText", "$expectedText-$actualText")
+        if(expectedText.equals(actualText))
+            return 1
+        return 0
+    }
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
@@ -69,4 +77,5 @@ data class QuestionsState(
     val isError: Boolean = error != null,
     val questions: List<QuestionUi> = emptyList(),
     val currentQuestionIndex: Int = 0,
+    val goodAnswerCount: Int = 0
 )
