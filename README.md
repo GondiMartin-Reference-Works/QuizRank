@@ -43,7 +43,7 @@ A bejelentkeztető oldalon adjuk meg felhasználói email-címünket és ahhoz t
 Ezt követően nyomjunk a(z) "Sign In" gombra.
 Amennyiben nincs felhasználói fiókunk, akkor nyomjunk a(z) "I don't have an account yet." gombra.
 
-<img src="./images/famed/sign-in-page_framed.png" width="320" display="block" margin="0px auto">
+<img src="./images/famed/sign-in-page_framed.png" width="320">
 
 1. ábra: Szövegdobozokban megadhatóak a felhasználói fiók adatai, illetve gombokkal tovább navigálhatunk a regisztráló oldalra - ha nincs felhasználói fiók - vagy a kezdőképernyőre sikeres bejelentkeztetést követően.
 
@@ -51,8 +51,8 @@ Amennyiben nincs felhasználói fiókunk, akkor nyomjunk a(z) "I don't have an a
 A(z) "I don't have any account yet." gomb hatására létrehozhatjuk saját felhasználói fiókunkat. Ehhez adjunk meg egy email-címet, illetve jelszót, ahol az utóbbit még egyszer meg kell adni. Így ellenőrizhető, hogy nem történt elgépelés a jelszó megadása során. A(z) "Sign up" gomb hatására a jól megadott adatok mentésre kerülnek, mellyel létrejött a felhasználói fiók.
 Ezt követően az alkalmazás kezdőképernyőjére kerülünk.
 
-<img src="./images/famed/sign-up_framed.png" width="320" display="block" margin="0px auto">
-<img src="./images/famed/home_page_framed.png" width="320" display="block" margin="0px auto">
+<img src="./images/famed/sign-up_framed.png" width="320">
+<img src="./images/famed/home_page_framed.png" width="320">
 
 2. ábra: Szövegdobozokban megadhatóak a felhasználói fiók létrehozásához szükséges adatok, illetve gombbal menthetjük el adatainkat.
 3. ábra: A kezdőképernyő. Alul egy gombbal a témákhoz navigálhat, illetve jobb felső sarokban két gomb segítségével megtekinthető a ranglista vagy kijelentkezhet az alkalmazásból.
@@ -68,15 +68,15 @@ A témák egymás alatt megtekinhetőek egy listában. Minden téma rendelkezik 
 A kérdéssor kitöltés közben abbahagyható, ehhez a jobb felső sarokban található 'Home' ikonra kell nyomni. Ekkor a kérdésre adott válaszokat a program törli.
 A kérdéssor kitöltése után egy összesítő oldal jelenik meg.
 
-<img src="./images/famed/topic_page_framed.png" width="320" display="block" margin="0px auto">
+<img src="./images/famed/topic_page_framed.png" width="320">
 
 4. ábra: Témákat megjelenítő oldal. A témák egymás alatt láthatóak egy listában. A kezdőképernyőre visszatérhet a jobb felső sarokban található 'Home' ikonnal. Adott témára kattintva kitölthető ahhoz tartozó tesztsor.
 
 
 A kérdéseket megjelenítő képernyőn fentről lefelé haladva megtalálható maga a kérdés egy nagyobb téglalapban, majd a lehetséges válaszok kisebb téglalapokban. A képernyő elrendezése változik attól függően, hogy hány lehetséges válasz áll rendelkezésre. A helyen gondolt válaszra nyomjunk rá, így az alkalmazás megjeleníti a következő kérdést adott témában, amennyiben rendelkezésre áll.
 
-<img src="./images/famed/question_four_page_framed.png" width="320" display="block" margin="0px auto">
-<img src="./images/famed/question_two_page_framed.png" width="320" display="block" margin="0px auto">
+<img src="./images/famed/question_four_page_framed.png" width="320">
+<img src="./images/famed/question_two_page_framed.png" width="320">
 
 5. ábra: Négy lehetséges választ tartalmazó kérdés. A lehetséges válaszra nyomva előhozható a következő kérdés, amennyiben rendelkezésre áll (egyébként összesítő oldal). A kitöltés közben a jobb felső sarokban található 'Home' ikonnal térhet vissza a kezdőképernyőre.
 6. ábra: Kettő lehetséges választ tartalmazó kérdés, hasonló funkcionalitással, mint a négyet tartalmazó.
@@ -85,7 +85,7 @@ A kérdéseket megjelenítő képernyőn fentről lefelé haladva megtalálható
 Az összesítő oldalon a nagy téglalapon megtekinthető a tesztsoron elért eredményünk (saját pontszám/összes pontszám formában.) Az eredmény elmentésére szolgál az ez alatt található szövegdoboz, ahol a nevünket megadhatjuk. Ezt követően a "Save your Result" gombra kattintva elmenthetjük az eredményünket, melyet később a ranglistán viszontláthatunk.
 Szintén itt is, eredmény elmentése nélkül visszatérhetünk a kezdőképernyőre.
 
-<img src="./images/famed/summary_page_framed.png" width="320" display="block" margin="0px auto">
+<img src="./images/famed/summary_page_framed.png" width="320">
 
 7. ábra: Jobb felső sarokban található ikonnal visszatérhet a kezdőképernyőre. Szövegdoboz segítségével nevet is rendelhet elért eredményéhez. Gomb segítségével elmentheti ezen eredményét.
 
@@ -95,7 +95,7 @@ Egy eredményhez tartozik egy elégedettségi ikon. Összesen ötféle reakció 
 A felhasználó saját eredményeit a jobb alsó sarokban található kuka segítségével törölheti.
 Az eredmények megtekintése után a 'Home' ikonnal (felül) visszatérhetünk a kezdőképernyőre.
 
-<img src="./images/famed/result_page_framed.png" width="320" display="block" margin="0px auto">
+<img src="./images/famed/result_page_framed.png" width="320">
 
 8. ábra: Eredményeket megjelenítő lista. Kuka gombbal törölhetőek saját eredményeink, illetve egy komplex listában megtekinthető más játékosok által eredmény is.
 </p>
