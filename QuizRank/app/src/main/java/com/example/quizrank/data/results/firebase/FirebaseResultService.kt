@@ -36,6 +36,14 @@ class FirebaseResultService(
         }
     }
 
+    override suspend fun deleteResults(ids: List<String>) {
+        ids.forEach { id ->
+            authService.currentUserId?.let {
+                currentCollection().document(id).delete().await()
+            }
+        }
+    }
+
     private fun currentCollection() =
         fireStore.collection(RESULT_COLLECTION)
 

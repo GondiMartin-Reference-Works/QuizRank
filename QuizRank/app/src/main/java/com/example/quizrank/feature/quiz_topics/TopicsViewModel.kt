@@ -8,10 +8,13 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.quizrank.QuizRankApplication
 import com.example.quizrank.data.auth.AuthService
 import com.example.quizrank.data.topics.TopicService
+import com.example.quizrank.domain.model.User
 import com.example.quizrank.ui.model.TopicUi
 import com.example.quizrank.ui.model.asTopicUi
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -25,6 +28,7 @@ class TopicsViewModel constructor(
 
     init {
         loadTopics()
+        loadUserId()
     }
 
     private fun loadTopics(){
@@ -38,6 +42,12 @@ class TopicsViewModel constructor(
             }catch (e: Exception){
                 _state.update { it.copy(isLoading = false, error = e) }
             }
+        }
+    }
+
+    private fun loadUserId(){
+        viewModelScope.launch {
+            _state.update { it.copy(userId = authService.currentUserId ?: "null") }
         }
     }
 
@@ -59,5 +69,6 @@ data class TopicsState(
     val isLoading: Boolean = false,
     val error: Throwable? = null,
     val isError: Boolean = error != null,
-    val topics: List<TopicUi> = emptyList()
+    val topics: List<TopicUi> = emptyList(),
+    val userId: String = ""
 )

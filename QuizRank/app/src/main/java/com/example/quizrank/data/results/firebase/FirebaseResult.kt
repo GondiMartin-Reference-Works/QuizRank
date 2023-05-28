@@ -7,19 +7,22 @@ data class FirebaseResult(
     @DocumentId val id: String = "",
     val topic: String = "",
     val result: Int = 0,
-    val name: String = ""
+    val name: String = "",
+    val userId: String = ""
 )
 
 fun FirebaseResult.asResult() = Result(
     id = id,
     topic = topic,
     result = result,
-    name = name
+    name = name,
+    userId = userId
 )
 
 fun Result.asFirebaseResult() = FirebaseResult(
     id = id,
     topic = topic,
     result = result,
-    name = name
+    name = name,
+    userId = userId
 )

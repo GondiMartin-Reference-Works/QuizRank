@@ -66,7 +66,10 @@ class QuestionsViewModel constructor(
     }
 
     fun onSave(name: String){
-        val topicTitle = checkNotNull<String>(savedState["title"]).split("-")[1]
+        val topicTitle = checkNotNull<String>(savedState["userId"]).split("-")[0]
+        val userId = checkNotNull<String>(savedState["userId"]).split("-")[1]
+        Log.d("topicTitle", topicTitle)
+        Log.d("userId", userId)
         viewModelScope.launch {
             try {
                 CoroutineScope(coroutineContext).launch(Dispatchers.IO) {
@@ -75,6 +78,7 @@ class QuestionsViewModel constructor(
                         topic = topicTitle,
                         result = _state.value.goodAnswerCount,
                         name = name,
+                        userId = userId
                     ))
                 }
             } catch (e: Exception) {

@@ -12,12 +12,15 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -29,6 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
@@ -64,7 +68,17 @@ fun ResultsScreen(
                     }
                 }
             )
+        },
+        floatingActionButton = {
+            LargeFloatingActionButton(
+                onClick = { viewModel.deleteResults() },
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.onPrimary
+            ) {
+                Icon(imageVector = Icons.Default.Delete, contentDescription = "Delete My Results")
+            }
         }
+
     ) { padding ->
         Box(
             modifier = Modifier
@@ -130,7 +144,8 @@ fun ResultsScreen(
                                                 text = state.results[i].name,
                                                 fontWeight = FontWeight.Bold,
                                                 fontSize = 20.sp,
-                                                textAlign = TextAlign.Center
+                                                textAlign = TextAlign.Center,
+                                                color = viewModel.setColor(state.results[i].userId),
                                             )
                                         }
                                         Column(

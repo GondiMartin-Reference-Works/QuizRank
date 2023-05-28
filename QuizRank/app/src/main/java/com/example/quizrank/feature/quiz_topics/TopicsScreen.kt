@@ -29,7 +29,7 @@ import com.example.quizrank.ui.model.toUiText
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopicsScreen(
-    onListItemClick: (String, String) -> Unit,
+    onListItemClick: (String, String, String) -> Unit,
     onQuit: () -> Unit,
     viewModel: TopicsViewModel = viewModel(factory = TopicsViewModel.Factory)
 ){
@@ -116,7 +116,7 @@ fun TopicsScreen(
                                 },
                                 modifier = Modifier.clickable(onClick = {
                                     onListItemClick(
-                                        state.topics[i].id, state.topics[i].title
+                                        state.topics[i].id, state.topics[i].title, state.userId
                                     )
                                 })
                             )

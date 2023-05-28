@@ -81,8 +81,8 @@ fun NavGraph(
         }
         composable(Screen.Topics.route){
             TopicsScreen(
-                onListItemClick = { id, title ->
-                    navController.navigate(Screen.Questions.passId(id, title))
+                onListItemClick = { id, title, userId ->
+                    navController.navigate(Screen.Questions.passData(id, title, userId))
                 },
                 onQuit = {
                     navController.popBackStack(
@@ -100,6 +100,9 @@ fun NavGraph(
                     type = NavType.StringType
                 },
                 navArgument("title") {
+                    type = NavType.StringType
+                },
+                navArgument("userId"){
                     type = NavType.StringType
                 }
             )

@@ -8,9 +8,9 @@ sealed class Screen(val route: String) {
     object Register: Screen("register")
     object Main: Screen("main")
     object Topics: Screen("topics")
-    object Questions: Screen("topic/{id}-{title}"){
-        fun passId(id: String, title: String): String {
-            return "topic/$id-$title"
+    object Questions: Screen("topic/{id}-{title}-{userId}"){
+        fun passData(id: String, title: String, userId: String): String {
+            return "topic/$id-$title-$userId"
         }
     }
     object Results: Screen("result")
