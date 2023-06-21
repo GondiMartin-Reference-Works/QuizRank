@@ -4,11 +4,9 @@
 
 ### 2023.05.28. - 2023 1. félév
 
-### Göndöcs Martin - (WUPA9P)
+### Göndöcs Martin
 
 ### martin.gondocs@gmail.com
-
-### Laborvezető: Kövesdán Gábor
 
 ### QuizRank
 
@@ -34,6 +32,7 @@ Minden kitöltött kérdés után egy összesítő oldal található. Itt megtek
 A kezdőképernyőn lehetőség van a ranglista megtekintésére. A ranglistán látható más játékosok pontszáma mellett a felhasználó pontszáma is. Előbbi halvány szürkén, míg utóbbi sötét szürkén. A ranglistán az eredmények először pontok alapján csökkenő sorrendben, majd témák szerint abc sorrendben tekinthetőek meg. Minden eredményhez tartozik egy ikon, mely az eredménnyel kapcsolatos elégedettségi szintet mutathatja. A pontok felett megtekinthető, hogy az melyik témában lett elérve.
 A ranglistán törölhető az összes saját eredmény.
 
+### [QuizRank]
 
 ## Felhasználói kézikönyv
 
@@ -47,7 +46,6 @@ Amennyiben nincs felhasználói fiókunk, akkor nyomjunk a(z) "I don't have an a
 
 1. ábra: Szövegdobozokban megadhatóak a felhasználói fiók adatai, illetve gombokkal tovább navigálhatunk a regisztráló oldalra - ha nincs felhasználói fiók - vagy a kezdőképernyőre sikeres bejelentkeztetést követően.
 
-
 A(z) "I don't have any account yet." gomb hatására létrehozhatjuk saját felhasználói fiókunkat. Ehhez adjunk meg egy email-címet, illetve jelszót, ahol az utóbbit még egyszer meg kell adni. Így ellenőrizhető, hogy nem történt elgépelés a jelszó megadása során. A(z) "Sign up" gomb hatására a jól megadott adatok mentésre kerülnek, mellyel létrejött a felhasználói fiók.
 Ezt követően az alkalmazás kezdőképernyőjére kerülünk.
 
@@ -56,7 +54,6 @@ Ezt követően az alkalmazás kezdőképernyőjére kerülünk.
 
 2. ábra: Szövegdobozokban megadhatóak a felhasználói fiók létrehozásához szükséges adatok, illetve gombbal menthetjük el adatainkat.
 3. ábra: A kezdőképernyő. Alul egy gombbal a témákhoz navigálhat, illetve jobb felső sarokban két gomb segítségével megtekinthető a ranglista vagy kijelentkezhet az alkalmazásból.
-
 
 A kezdőképernyőn három lehetőségünk van:
  - A(z) "Check the topics" gomb hatására megtekinthetjük a lehetséges témákat.
