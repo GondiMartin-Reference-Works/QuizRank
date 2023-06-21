@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">QuizRank</string>
+    <string name="some_error_message">Error</string>
+    <string name="textfield_label_email">Email</string>
+    <string name="textfield_label_password">Password</string>
+    <string name="button_text_no_account">I don\'t have an account yet.</string>
+    <string name="button_text_sign_in">Sign In</string>
+    <string name="app_bar_title_sign_up">Sign up</string>
+    <string name="textfield_label_confirm_password">Confirm Password</string>
+    <string name="button_text_sign_up">Sign Up</string>
+    <string name="home_page">Home Page</string>
+    <string name="text_empty_topics_list">There\'s no topic at the moment.</string>
+    <string name="topics_page">Topics</string>
+    <string name="questions_page">Questions</string>
+    <string name="results_page">Results Page</string>
+    <string name="text_empty_results_list">There\'s no result at the moment.</string>
+</resources>
